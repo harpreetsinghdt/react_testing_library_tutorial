@@ -1,0 +1,66 @@
+React Testing Library Tutorial
+Source: 
+https://testing-library.com/docs/react-testing-library/intro
+https://www.robinwieruch.de/react-testing-library/
+
+
+REACT TESTING LIBRARY: SELECTING ELEMENTS
+1. implicit assertion, because getByText would throw error, if element wouldn't be there.
+		screen.getByText('Search:');
+
+2. explicit assertion, recommended
+		expect(screen.getByText('Search:')).toBeInTheDocument();
+
+assertions
+		screen.debug();
+REACT TESTING LIBRARY: SEARCH TYPES
+Different Search Types available in RTL.
+getByText
+		screen.getByText('Search');
+		expect(screen.getByText('Search:')).toBeInTheDocument();
+		expect(screen.getByText(/Search/)).toBeInTheDocument();
+		expect(screen.getByText(/NewSearch/)).toBeInTheDocument();
+getByRole
+		screen.getByRole('textbox');
+		expect(screen.getByRole('textbox')).toBeInTheDocument();
+getByLabelText
+		screen.getByLabelText('NewSearch:');
+		expect(screen.getByLabelText('NewSearch:')).toBeInTheDocument();
+		expect(screen.getByPlaceholderText('Enter text')).toBeInTheDocument();
+getByAltText
+		screen.getByAltText('Profile Img');
+		expect(screen.getByAltText('Profile Img')).toBeInTheDocument();
+getByDisplayValue
+		screen.getByDisplayValue('React tutorial');
+		expect(screen.getByDisplayValue('React tutorial')).toBeInTheDocument();
+getByTestId
+		expect(screen.getByTestId('courseId')).toBeInTheDocument();
+
+REACT TESTING LIBRARY: SEARCH VARIANTS
+queryBy with all its search types:
+		queryBytext
+		queryByRole
+		queryByLabelText
+		queryByPlaceholderText
+		queryByAltText
+		queryByDisplayValue
+
+findBy with all its search types:
+		findBytext
+		findByRole
+		findByLabelText
+		findByPlaceholderText
+		findByAltText
+		findByDisplayValue
+
+For any element that isn't there yet but will be there eventually, use findBy over getBy or queryBy. If you assert for a missing element, use queryBy. Otherwise default to getBy.
+
+multiple elements
+		getAllBy
+		queryAllBy
+		findAllBy
+
+Assertive Functions
+Assertive functions happen on the right hand-side of your assertion. In the previous tests, you have used two assertive functions: toBeNull and toBeInTheDocument. Both are primarily used in React Testing Library to check whether an element is present or not.
+
+REACT TESTING LIBRARY: FIRE EVENT
