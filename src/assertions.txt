@@ -1,5 +1,5 @@
 React Testing Library Tutorial
-Source: 
+Source:
 https://testing-library.com/docs/react-testing-library/intro
 https://www.robinwieruch.de/react-testing-library/
 
@@ -64,3 +64,13 @@ Assertive Functions
 Assertive functions happen on the right hand-side of your assertion. In the previous tests, you have used two assertive functions: toBeNull and toBeInTheDocument. Both are primarily used in React Testing Library to check whether an element is present or not.
 
 REACT TESTING LIBRARY: FIRE EVENT
+The fireEvent function takes an element (here the input field by textbox role) and an event (here an event which has the value "JavaScript").
+fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: 'JavaScript' },
+    });
+
+React Testing Library: User Event
+userEvent API mimics the actual browser behavior more closely than the fireEvent API. For example, a fireEvent.change() triggers only a change event whereas userEvent.type triggers a change event, but also keyDown, keyPress, and keyUp events.
+userEvent.type(screen.getByRole('textbox'), 'JavaScript');
+
+REACT TESTING LIBRARY: CALLBACK HANDLERS
